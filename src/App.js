@@ -3,12 +3,14 @@ import './App.css';
 import './css/style.css';
 // cmd into the file and install bootstrap using the command npm install bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useRef } from 'react';
 
 //Create two cards that displays an image of earth with a header (the header will have the date)
 const DisplayEarth = (props) => {
   return (
-    <div className='container'>
+    <div>
+      <HeaderOfWebPage></HeaderOfWebPage>
+      <div className='container'>
       <div className='card'>
         <img src={props.image1}></img>
         <div className='card-header'>
@@ -27,14 +29,56 @@ const DisplayEarth = (props) => {
           <div className='d-flex justify-content-center'>Altitude: {props.card2Altitude}km</div>
           <ButtonGroup></ButtonGroup>
       </div>
+      <SearchGroup></SearchGroup>
+      </div>
     </div>
   )
 }
-
+//Headder of the website with NAV bar
 const HeaderOfWebPage = (props) => {
-  <div class="page-header">
-    <h1>Example Page Header</h1>
+  return(
+ <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <a className="navbar-brand" href="#">NASA API TESTER</a>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+  <div className="collapse navbar-collapse" id="navbarText">
+    <ul className="navbar-nav mr-auto">
+      <li className="nav-item active">
+        <a className="nav-link" href="#">Home</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="#">Lorm</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="#">Lorm</a>
+      </li>
+    </ul>
+    <span className="navbar-text">
+      This website is made as a project to query the NASA API implemented using REACT.
+    </span>
   </div>
+</nav>
+)}
+
+const SearchGroup = (props) => {
+  //Set the default state to null when the SearchBox is loaded.
+  const inputRef = useRef(null);
+  function handleClick (){
+    //When the click handler is called, it will print the current state of the inputRef.
+    var userDateInput = inputRef.current.value;
+    console.log(userDateInput);
+  };
+  return(
+  <div className='card searchBoxContainer'>
+    <div className='searchBoxHeader'><h1>Search By Date</h1></div>
+    <label className='lableSearchBox'>Select a date to search for</label>
+    <div>
+      <input className='searchBoxInputOne' type="date" id="dateSelector" name="name" ref={inputRef}/>
+    </div>
+    <button type="button" onClick={handleClick} className='btn btn-light loadButton'>LOAD IMAGE</button>
+  </div>
+  )
 }
 
 const ButtonGroup = (props) => {
@@ -85,6 +129,7 @@ class App extends Component {
   //runs when the window has loaded
   componentDidMount() {
     var ObjDataPromise = getEpicObject();
+    //getMarsData();
 
     //WHEN USING PROMSIES MAKE SURE TO USE |.then's|, you cain't just jump in.
     /*img2Url.then(value => {
@@ -123,6 +168,8 @@ function getEpicObject() {
   return fetch('https://api.nasa.gov/EPIC/api/natural?api_key=eAjPURLpjgareHUuED8iAKrNmWoWAQkOIa2iZqMc')
     .then(response => response.json())
     .then(data => {
+      textFile(data);
+      console.log(data);
       //String cheese to construct a link that goes to the latest picture of the earth from the L1 point
       var urlLink = stringCheese(data);
       //Retrives the date of the first image
@@ -136,6 +183,27 @@ function getEpicObject() {
       return {dateData, urlLink, captionData, j2000Altitude};
     });
 }
+//Somehow I need to qurry for a specific sol. 
+function getMarsData(){
+  return fetch("https://api.nasa.gov/insight_weather/?api_key=eAjPURLpjgareHUuED8iAKrNmWoWAQkOIa2iZqMc&feedtype=json&ver=1.0")
+  .then(response =>  response.json())
+  .then(data => {
+    console.log(data);
+
+  })
+}
+
+
+function textFile (data) {
+  const element = document.createElement("a");
+  const textFile = new Blob([[JSON.stringify(data)]]); //pass data from localStorage API to blob
+  element.href = URL.createObjectURL(textFile);
+  element.classList = 'downloadJsonLink'
+  element.innerText = 'Download Data As JSON'
+  element.download = "noaaSatelliteData.json";
+  document.body.appendChild(element);
+}
+
 
 function stringCheese(obj) {
   const source0 = "https://api.nasa.gov/EPIC/archive/natural/"
