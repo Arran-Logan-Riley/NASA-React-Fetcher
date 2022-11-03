@@ -1,23 +1,64 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+React-base/node_modules
+React-base/.pnp
+React-base/.pnp.js
 
 # testing
-/coverage
+React-base/coverage
 
 # production
-/build
+React-base/build
 
 # misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+React-base/.DS_Store
+React-base/.env.local
+React-base/.env.development.local
+React-base/.env.test.local
+React-base/.env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+React-base/npm-debug.log*
+React-base/yarn-debug.log*
+React-base/yarn-error.log*
+
+
+# Node server
+# Next-js\nasa-fetcher-server
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+Next-js/nasa-fetcher-server/node_modules
+Next-js/nasa-fetcher-server/.pnp
+Next-js/nasa-fetcher-server/.pnp.js
+
+# testing
+Next-js/nasa-fetcher-server/coverage
+
+# next.js
+Next-js/nasa-fetcher-server/.next/
+Next-js/nasa-fetcher-server/out/
+
+# production
+Next-js/nasa-fetcher-server/build
+
+# misc
+Next-js/nasa-fetcher-server/.DS_Store
+Next-js/nasa-fetcher-server/*.pem
+
+# debug
+Next-js/nasa-fetcher-server/npm-debug.log*
+Next-js/nasa-fetcher-server/yarn-debug.log*
+Next-js/nasa-fetcher-server/yarn-error.log*
+Next-js/nasa-fetcher-server/.pnpm-debug.log*
+
+# local env files
+Next-js/nasa-fetcher-server/.env*.local
+
+# vercel
+Next-js/nasa-fetcher-server/.vercel
+
+# typescript
+Next-js/nasa-fetcher-server/*.tsbuildinfo
+Next-js/nasa-fetcher-server/next-env.d.ts
