@@ -24,40 +24,40 @@ React-base/yarn-error.log*
 
 
 # Node server
-# Next-js\nasa-fetcher-server
+# next-js\nasa-fetcher-server
 # ENV
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/.env
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/.env
 # dependencies
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/node_modules
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/.pnp
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js.pnp.js
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/node_modules
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/.pnp
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js.pnp.js
 
 # testing
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/coverage
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/coverage
 
 # next.js
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/.next/
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/out/
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/.next/
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/out/
 
 # production
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/build
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/build
 
 # misc
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/.DS_Store
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/*.pem
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/.DS_Store
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/*.pem
 
 # debug
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/npm-debug.log*
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/yarn-debug.log*
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/yarn-error.log*
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/.pnpm-debug.log*
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/npm-debug.log*
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/yarn-debug.log*
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/yarn-error.log*
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/.pnpm-debug.log*
 
 # local env files
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/.env*.local
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/.env*.local
 
 # vercel
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/.vercel
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/.vercel
 
 # typescript
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/*.tsbuildinfo
-NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/next-env.d.ts
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/*.tsbuildinfo
+NASA-React-Fetcher\next-js\nasa-fetcher-server-js/next-env.d.ts
