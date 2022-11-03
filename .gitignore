@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 \NASA-React-Fetcher\next-js\nasa-fetcher-server-js\.env
+
+
+
 # dependencies
 React-base/node_modules
 React-base/.pnp
