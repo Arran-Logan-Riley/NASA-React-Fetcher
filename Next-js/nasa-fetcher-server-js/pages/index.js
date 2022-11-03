@@ -9,12 +9,12 @@ import useSWR from 'swr'
 export default function Home() {
   const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-  function Profile() {
+  function GetKey() {
     const { data, error } = useSWR('/api/hello', fetcher)
   
     if (error) return <div>failed to load</div>
     if (!data) return <div>loading...</div>
-    return <div>{data.name}!</div>
+    return <div>Here is your key: {data.key}</div>
   }
   
   return (
@@ -23,7 +23,7 @@ export default function Home() {
       <h1 className={styles.title}>
         Wow how cool, Next.JS for our Nasa App.
       </h1>
-      <a><Profile></Profile></a>
+      <a><GetKey></GetKey></a>
     </main>
     <footer className={styles.footer}>
     </footer>

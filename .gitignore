@@ -25,6 +25,8 @@ React-base/yarn-error.log*
 
 # Node server
 # Next-js\nasa-fetcher-server
+# ENV
+NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/.env
 # dependencies
 NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/node_modules
 NASA-React-Fetcher\Next-js\nasa-fetcher-server-js/.pnp
