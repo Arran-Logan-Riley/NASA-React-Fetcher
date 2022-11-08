@@ -128,12 +128,13 @@ export default function Home() {
       card2: "",
       image1: "https://api.nasa.gov/EPIC/archive/natural/2022/03/16/png/epic_1b_20220316001752.png?api_key=",
       image2: "",
-      key: ""
+      key: "",
+      testOut: ""
     };
 
   function getKey() {
     // Function to get key from API.
-    const { data, error } = useSWR('/api/hello', fetcher)
+    const { data, error } = useSWR('/api/keyrequest', fetcher)
   
     if (error) return <div>failed to load</div>
     if (!data) return <div>loading...</div>
@@ -143,6 +144,20 @@ export default function Home() {
   // Call the above function to update the state with the new key.
   getKey();
   
+  function getData() {
+    // Function to get data from API.
+    const { data, error } = useSWR('/api/datamanage', fetcher)
+  
+    if (error) return <div>failed to load</div>
+    if (!data) return <div>loading...</div>
+    // console.log(data.sendData);
+    state.image2 = data.sendData.image2;
+    state.card2 = data.sendData.card2;
+    state.card2Date = data.sendData.card2Date;
+    // TEST state.testOut = data.sendData.image2;
+  } 
+
+  getData();
     return (
       //this is so confusing:
       // Now we just access the "state" object.
@@ -150,7 +165,7 @@ export default function Home() {
       //State key is added at the end there with "image1={state.image1+state.key}" 
       <div>
         <DisplayEarth card2Altitude={state.card2Altitude} card1Altitude={state.card1Altitude} card2Date={state.card2Date} card1Date={state.card1Date} card1={state.card1} card2={state.card2} image1={state.image1+state.key} image2={state.image2} />
-        <div><a>{state.key}</a></div>
+        <div><a>{state.testOut}</a></div>
       </div>
 
       //Returns the new components of the app by accessing the state data by using this.state.card1
