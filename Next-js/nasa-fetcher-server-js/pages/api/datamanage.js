@@ -2,67 +2,78 @@ import * as dotenv from 'dotenv';
 let nasaKey = process.env.NASAKEY;
 
 
-function getEpicObject() {
-
-    return fetch(`https://api.nasa.gov/EPIC/api/natural?api_key=${nasaKey}`)
-        .then(response => response.json())
-        .then(data => {
-
-        console.log(data);
-        //String cheese to construct a link that goes to the latest picture of the earth from the L1 point
-        var urlLink = stringCheese(data);
-        //Retrives the date of the first image
-        let dateData = (data[0].date);
-        //Retreives the caption of the image
-        let captionData = (data[0].caption);
-        //Gets the dscoverj2000 position x,y,z
-        let j2000 = (data[0].dscovr_j2000_position);
-        //This method calculates how far away the spacecraft is away from the earth.
-        return {dateData, urlLink, captionData};
-        });
+class Card {
+    constructor(dataUrl, position) {
+        this.fetchFromUrl(dataUrl, position);
     }
-    
-    function stringCheese(obj) {
-        // Create request URL to NASA. Should later be changed to serve links to local cached images.
-        const source0 = "https://api.nasa.gov/EPIC/archive/natural/"
-        const apiKey = `api_key=${nasaKey}`
-        var imgUrl = ""
-        var url = [];
-        var identifier = obj[0].image;
-        var date = obj[0].date;
-        //cutting the unessasary data points out of the string
-        date = date.slice(0, -9);
-        //replacing slashes with dashes
-        date = date.split('-').join('/');
-        //adding the data to an array
-        url.push(identifier, date)
-        //Create the hyperlink that goes to the image
-        imgUrl = source0 + url[1] + "/" + "png/" + url[0] + ".png?" + apiKey
-        //console.log(imgUrl);
-        return imgUrl;
-    };
-    
-    
-// Create an object to be sent to the user so data can be accessed.
-let toSend = {};
-// Create an object that has data in it.
-let ObjDataPromise = getEpicObject();
 
-const printAddress = () => {
-    ObjDataPromise.then((a) => {
-        toSend = {
-        image2: a.urlLink,
-        card2Date: a.dateData,
-        card2: a.captionData,
+    async fetchFromUrl(dataUrl, position) {
+        async function fetchAsync() {
+            let response = await fetch(`https://api.nasa.gov/EPIC/api/natural?api_key=${nasaKey}`);
+            let data = await response.json();
+            return data;
+           
+            //console.log(data[0].date);
+            // console.log(data[position]);
+            //String cheese to construct a link that goes to the latest picture of the earth from the L1 point
+            // var urlLink = stringCheese(data, position);
+
+        }
+        fetchAsync().then(data => this.cardDate = data[0].date)
+        fetchAsync().then(data => this.caption = data[0].caption)
+        // TODO: Generate url using string cheese.
+        fetchAsync().then(data => this.imageUrl =`https://api.nasa.gov/EPIC/archive/natural/2022/03/16/png/epic_1b_20220316001752.png?api_key=${nasaKey}`)
 
     }
-});
-};
-printAddress();
-    
-// Send toSend object to user as "sendData".
-export default function handler(req, res) {
-    res.status(200).json({ sendData: toSend })
+
+    setDatedate(date) {
+        this.cardDate = cardDate;
+    }
+
+    setCaption(caption) {
+        this.caption = caption;
+    }
+
+    setUrl(url) {
+        this.imageUrl = url;
+    }
 }
 
 
+class CardController {
+    constructor() {
+        this.cards = new Card(`https://api.nasa.gov/EPIC/api/natural?api_key=${nasaKey}`, 0)
+    }
+}
+
+let cardSet = new CardController();
+
+// Send toSend object to user as "sendData".
+export default function handler(req, res) {
+    // console.log(Object.keys(cardSet))
+    // console.log(`Sent ${JSON.stringify(cardSet.cards)}`)
+    res.status(200).json({ sendData: cardSet.cards })
+}
+
+
+
+function stringCheese(obj, position) {
+    // (PIUF - Position image url finder).
+    // Create request URL to NASA. Should later be changed to serve links to local cached images.
+    const source0 = "https://api.nasa.gov/EPIC/archive/natural/"
+    const apiKey = `api_key=${nasaKey}`
+    var imgUrl = ""
+    var url = [];
+    var identifier = obj[position].image;
+    var date = obj[position].date;
+    //cutting the unessasary data points out of the string
+    date = date.slice(0, -9);
+    //replacing slashes with dashes
+    date = date.split('-').join('/');
+    //adding the data to an array
+    url.push(identifier, date)
+    //Create the hyperlink that goes to the image
+    imgUrl = source0 + url[1] + "/" + "png/" + url[0] + ".png?" + apiKey
+    //console.log(imgUrl);
+    return imgUrl;
+};
