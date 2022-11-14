@@ -122,7 +122,7 @@ class App extends Component {
       card2Date: "",
       card1: "This is a test of card1",
       card2: "",
-      image1: "https://api.nasa.gov/EPIC/archive/natural/2022/03/16/png/epic_1b_20220316001752.png?api_key=eAjPURLpjgareHUuED8iAKrNmWoWAQkOIa2iZqMc",
+      image1: "https://api.nasa.gov/EPIC/archive/natural/2022/03/16/png/epic_1b_20220316001752.png?api_key=",
       image2: ""
     }
   }
@@ -165,7 +165,7 @@ class App extends Component {
 
 function getEpicObject() {
 
-  return fetch('https://api.nasa.gov/EPIC/api/natural?api_key=eAjPURLpjgareHUuED8iAKrNmWoWAQkOIa2iZqMc')
+  return fetch('https://api.nasa.gov/EPIC/api/natural?api_key=')
     .then(response => response.json())
     .then(data => {
       textFile(data);
@@ -185,7 +185,7 @@ function getEpicObject() {
 }
 //Somehow I need to qurry for a specific sol. 
 function getMarsData(){
-  return fetch("https://api.nasa.gov/insight_weather/?api_key=eAjPURLpjgareHUuED8iAKrNmWoWAQkOIa2iZqMc&feedtype=json&ver=1.0")
+  return fetch("https://api.nasa.gov/insight_weather/?api_key=")
   .then(response =>  response.json())
   .then(data => {
     console.log(data);
@@ -207,7 +207,7 @@ function textFile (data) {
 
 function stringCheese(obj) {
   const source0 = "https://api.nasa.gov/EPIC/archive/natural/"
-  const apiKey = "api_key=eAjPURLpjgareHUuED8iAKrNmWoWAQkOIa2iZqMc"
+  const apiKey = ""
   var imgUrl = ""
   var url = [];
   var identifier = obj[0].image;

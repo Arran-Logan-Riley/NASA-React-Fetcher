@@ -123,17 +123,18 @@ export default function Home() {
       card1Altitude: " 35888.37",
       card2Altitude: "",
       card1Date: "16/03/2022",
-      card2Date: "",
+      cardDate: "",
       card1: "This is a test of card1",
-      card2: "",
+      cardCaption: "",
       image1: "https://api.nasa.gov/EPIC/archive/natural/2022/03/16/png/epic_1b_20220316001752.png?api_key=",
-      image2: "",
-      key: ""
+      imageUrl: "",
+      key: "",
+      testOut: ""
     };
 
   function getKey() {
     // Function to get key from API.
-    const { data, error } = useSWR('/api/hello', fetcher)
+    const { data, error } = useSWR('/api/keyrequest', fetcher)
   
     if (error) return <div>failed to load</div>
     if (!data) return <div>loading...</div>
@@ -143,14 +144,29 @@ export default function Home() {
   // Call the above function to update the state with the new key.
   getKey();
   
+  function getData() {
+    // Function to get data from API.
+    const { data, error } = useSWR('/api/datamanage', fetcher)
+  
+    if (error) return <div>failed to load</div>
+    if (!data) return <div>loading...</div>
+    // console.log(data.sendData);
+    console.log(data);
+    state.imageUrl = data.sendData.imageUrl;
+    state.caption = data.sendData.caption;
+    state.cardDate = data.sendData.cardDate;
+    // TEST state.testOut = data.sendData.image2;
+  } 
+
+  getData();
     return (
       //this is so confusing:
       // Now we just access the "state" object.
 
       //State key is added at the end there with "image1={state.image1+state.key}" 
       <div>
-        <DisplayEarth card2Altitude={state.card2Altitude} card1Altitude={state.card1Altitude} card2Date={state.card2Date} card1Date={state.card1Date} card1={state.card1} card2={state.card2} image1={state.image1+state.key} image2={state.image2} />
-        <div><a>{state.key}</a></div>
+        <DisplayEarth card2Altitude={state.card2Altitude} card1Altitude={state.card1Altitude} card2Date={state.cardDate} card1Date={state.card1Date} card1={state.card1} card2={state.caption} image1={state.image1+state.key} image2={state.imageUrl} />
+        <div><a>{state.testOut}</a></div>
       </div>
 
       //Returns the new components of the app by accessing the state data by using this.state.card1
