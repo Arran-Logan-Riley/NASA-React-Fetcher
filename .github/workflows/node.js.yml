@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
         run:
-          working-directory: ./React-base
+          working-directory: ./NASA-React-Fetcher/React-base
     
     strategy:
       matrix:
