@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: ['api.nasa.gov'],
   },
+  output: 'standalone',
 }
 
 module.exports = nextConfig
