@@ -1,9 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import './css/style.css';
 // cmd into the file and install bootstrap using the command npm install bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { Component, Fragment, useRef } from 'react';
+import React, { Component, useRef } from 'react';
 
 //Create two cards that displays an image of earth with a header (the header will have the date)
 const DisplayEarth = (props) => {
@@ -12,7 +11,7 @@ const DisplayEarth = (props) => {
       <HeaderOfWebPage></HeaderOfWebPage>
       <div className='container'>
       <div className='card'>
-        <img src={props.image1}></img>
+        <img src={props.image1} alt={props.image1}></img>
         <div className='card-header'>
           {props.card1}
         </div>
@@ -21,7 +20,7 @@ const DisplayEarth = (props) => {
         <ButtonGroup></ButtonGroup>
       </div>
       <div className='card'>
-        <img src={props.image2}></img>
+        <img src={props.image2} alt={props.image2}></img>
         <div className='card-header'>
           {props.card2}
           </div>
@@ -38,20 +37,20 @@ const DisplayEarth = (props) => {
 const HeaderOfWebPage = (props) => {
   return(
  <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <a className="navbar-brand" href="#">NASA API TESTER</a>
+  <a className="navbar-brand" href="/#">NASA API TESTER</a>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
   <div className="collapse navbar-collapse" id="navbarText">
     <ul className="navbar-nav mr-auto">
       <li className="nav-item active">
-        <a className="nav-link" href="#">Home</a>
+        <a className="nav-link" href="/#">Home</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">Lorm</a>
+        <a className="nav-link" href="/#">Lorm</a>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">Lorm</a>
+        <a className="nav-link" href="/#">Lorm</a>
       </li>
     </ul>
     <span className="navbar-text">
@@ -183,7 +182,8 @@ function getEpicObject() {
       return {dateData, urlLink, captionData, j2000Altitude};
     });
 }
-//Somehow I need to qurry for a specific sol. 
+
+/* Somehow I need to query for a specific sol.
 function getMarsData(){
   return fetch("https://api.nasa.gov/insight_weather/?api_key=")
   .then(response =>  response.json())
@@ -192,6 +192,7 @@ function getMarsData(){
 
   })
 }
+*/
 
 
 function textFile (data) {
@@ -219,7 +220,7 @@ function stringCheese(obj) {
   //adding the data to an array
   url.push(identifier, date)
   //Create the hyperlink that goes to the image
-  imgUrl = source0 + url[1] + "/" + "png/" + url[0] + ".png?" + apiKey
+  imgUrl = `${source0}${url[1]}/png/${url[0]}.png?${apiKey}`
   //console.log(imgUrl);
   return imgUrl;
 };
