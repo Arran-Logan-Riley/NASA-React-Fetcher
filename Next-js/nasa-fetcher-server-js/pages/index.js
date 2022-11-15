@@ -6,14 +6,13 @@ import React, { Component, Fragment, useRef } from 'react';
 
 import useSWR from 'swr'
 
-
 const DisplayEarth = (props) => {
   return (
     <div>
       <HeaderOfWebPage></HeaderOfWebPage>
       <div className='container'>
       <div className={'card ' + styles.cardSizer}>
-        <img src={props.image1}></img>
+        <Image src={props.image1} alt={props.image1}></Image>
         <div className='card-header'>
           {props.card1}
         </div>
@@ -22,7 +21,7 @@ const DisplayEarth = (props) => {
         <ButtonGroup></ButtonGroup>
       </div>
       <div className={'card ' + styles.cardSizer}>
-        <img src={props.image2}></img>
+        <Image src={props.image2} alt={props.image2}></Image>
         <div className='card-header'>
           {props.card2}
           </div>
@@ -132,7 +131,7 @@ export default function Home() {
       testOut: ""
     };
 
-  function getKey() {
+  function useGetKey() {
     // Function to get key from API.
     const { data, error } = useSWR('/api/keyrequest', fetcher)
   
@@ -142,9 +141,9 @@ export default function Home() {
   }
 
   // Call the above function to update the state with the new key.
-  getKey();
+  useGetKey();
   
-  function getData() {
+  function useGetData() {
     // Function to get data from API.
     const { data, error } = useSWR('/api/datamanage', fetcher)
   
@@ -158,7 +157,7 @@ export default function Home() {
     // TEST state.testOut = data.sendData.image2;
   } 
 
-  getData();
+  useGetData();
     return (
       //this is so confusing:
       // Now we just access the "state" object.
