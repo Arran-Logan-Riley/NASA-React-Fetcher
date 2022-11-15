@@ -162,7 +162,7 @@ export default function Home() {
       //this is so confusing:
       // Now we just access the "state" object.
 
-      //State key is added at the end there with "image1={state.image1+state.key}" 
+      // State key is added at the end there with "image1={state.image1+state.key}" ONLY FOR IMAGE 1, the second image gets the key from the server.
       <div>
         <DisplayEarth card2Altitude={state.card2Altitude} card1Altitude={state.card1Altitude} card2Date={state.cardDate} card1Date={state.card1Date} card1={state.card1} card2={state.caption} image1={state.image1+state.key} image2={state.imageUrl} />
         <div><a>{state.testOut}</a></div>
