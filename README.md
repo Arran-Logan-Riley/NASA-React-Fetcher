@@ -1,12 +1,14 @@
 # NASA API FETCHER
 A NASA API interactor tool. 
 ## What is this for?
+This project is a tool created to access the publically accessible NASA API. I love NASA, that's why and there is lots of cool API stuff I want to show people who aren't techie.
 ### Current features:
 * Latest image from a NASA satellite located at Lagrange point 1 (L1).
 * NASA image direct URL generation.
 * Live key URL transfer from server env.
 ### ToDo:
-
+Originally this was not built with Next.JS in mind. This is why there is a significant amount of data processing on the client side that should be on the server. This is on the todo list.
+* Server-side box rendering
 * Image date search
 * Self-host image and self-URL generation.
 * Mars weather
