@@ -6,6 +6,8 @@ This project is a tool created to access the publically accessible NASA API. I l
 * Latest image from a NASA satellite located at Lagrange point 1 (L1).
 * NASA image direct URL generation.
 * Live key URL transfer from server env.
+* Satellite, Earth and Moon tracker (Python).
+![Satellite, Earth and Moon](https://github.com/Arran-Logan-Riley/NASA-React-Fetcher/blob/master/satellite_processed.png?raw=true)
 ### ToDo:
 Originally this was not built with Next.JS in mind. This is why there is a significant amount of data processing on the client side that should be on the server. This is on the todo list.
 * Server-side box rendering
