@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
         run:
-          working-directory: ./React-base
+          working-directory: ./Next-js/nasa-fetcher-server-js/
     
     strategy:
       matrix:
@@ -29,7 +29,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: ./React-base/package-lock.json
+        cache-dependency-path: ./Next-js/nasa-fetcher-server-js/package-lock.json
       # CI = false to set errors to warnings. But, we should just fix that stuff instead.
     - run: npm ci
     - run: npm run build --if-present
