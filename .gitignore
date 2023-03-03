@@ -62,3 +62,6 @@ next-js\nasa-fetcher-server-js/.vercel
 next-js\nasa-fetcher-server-js/*.tsbuildinfo
 next-js\nasa-fetcher-server-js/next-env.d.ts
 next-js/Nasa-fetcher-server-js/.env
+
+
+node_modules
