@@ -25,4 +25,4 @@ Located [here](https://github.com/Arran-Logan-Riley/NASA-React-Fetcher/tree/mast
 * Ran: `docker build -t nasa-fetcher-docker`.
 * Ran: `docker run -p 3000:3000 nasa-fetcher-docker`.
 ## React
-React app is an alfa build of the NASA API Fetcher tool as proof of concept.
+React app is an alfa build of the NASA API Fetcher tool as proof of concept. It is not fully functional and is still in development.
